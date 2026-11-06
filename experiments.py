@@ -133,7 +133,7 @@ def fig_reverse(models: dict, T: int, path: str) -> str:
             ax = axes[row, col]
             plotting.scatter(ax, traj[col], plotting.PALETTE[name], s=2.2, alpha=0.5)
             if row == 0:
-                ax.set_title(f"t = {T - 1 - col * (T // 5)}" if col else f"t = {T - 1}", fontsize=9)
+                ax.set_title(f"t = {max(T - 1 - col * (T // 5), 0)}", fontsize=9)
             if col == 0:
                 ax.set_ylabel(name, color=plotting.PALETTE[name], fontsize=11)
     fig.suptitle("逆时 SDE 的数值求解：从纯噪声回到数据（同行从左到右）", y=0.995, fontsize=12)
